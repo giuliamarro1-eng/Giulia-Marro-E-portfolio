@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfolio Professionale - Giulia Marro</title>
+    <style>
+        :root {
+            --primary-color: #0d3b66;
+            --secondary-color: #0077b6;
+            --accent-color: #e63946;
+            --bg-light: #f8f9fa;
+            --text-dark: #2b2d42;
+            --text-muted: #6c757d;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Layout con Sidebar per Desktop */
+        @media (min-width: 992px) {
+            body {
+                flex-direction: row;
+            }
+            main {
+                margin-left: var(--sidebar-width);
+                padding: 40px;
+            }
+            nav {
+                width: var(--sidebar-width);
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                overflow-y: auto;
+            }
+        }
+
+        /* Stile Navigazione / Sidebar */
+        nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+
+        nav .brand {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        nav h1 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        nav p {
+            font-size: 0.85rem;
+            color: #a8dadc;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            color: #f1faee;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Contenuto Principale */
+        main {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        header {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        header h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 11fr));
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .meta-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Sezioni e Card */
+        section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            scroll-margin-top: 20px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        blockquote {
+            background-color: #e2ece9;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Formattazione Formule/Badge */
+        .formula-box {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+            display: inline-block;
+        }
+
+        /* Tabelle / Indicatori di Valutazione */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .badge-check {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">
+            <h1>Giulia Marro</h1>
+            <p>Classe A040 - E-Portfolio</p>
+        </div>
+        <ul>
+            <li><a href="#profilo">Profilo Personale</a></li>
+            <li><a href="#autobiografia">Autobiografia Formativa</a></li>
+            <li><a href="#bilancio-iniziale">Bilancio Competenze</a></li>
+            <li><a href="#livelli-iniziali">Livelli Iniziali</a></li>
+            <li><a href="#attività-didattica">Attività Didattica (Aron)</a></li>
+            <li><a href="#esperienza-formativa">Percorso di Abilitazione</a></li>
+            <li><a href="#tirocinio-indiretto">Tirocinio Indiretto</a></li>
+            <li><a href="#prospettive-future">Sviluppo & Lifelong Learning</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+        <header>
+            <h2>Percorso di formazione iniziale e abilitazione dei docenti</h2>
+            <p>Scuole secondarie di I e II grado — III ciclo, a.a. 2025-2026 (DPCM 4 agosto 2023, Allegato 2 - 30 CFU)</p>
+            <div class="meta-grid">
+                <div class="meta-item"><strong>Università:</strong> Università di Pisa</div>
+                <div class="meta-item"><strong>Classe di concorso:</strong> A040 Tecnologie Elettriche ed Elettroniche</div>
+                <div class="meta-item"><strong>Candidata:</strong> Giulia Marro</div>
+                <div class="meta-item"><strong>Istituto:</strong> ITI G. Galilei (Livorno)</div>
+            </div>
+        </header>
+
+        <section id="profilo">
+            <h3>SEZIONE A - Profilo Personale</h3>
+            <p>Sono Giulia Marro, docente di Tecnologie elettriche ed elettroniche presso l’istituto tecnico industriale G. Galilei di Livorno. Dopo essermi diplomata presso lo stesso istituto come perito informatico nel A.S 2009/2010, ho intrapreso il corso di ingegneria delle telecomunicazioni presso l’università di Pisa. Un percorso importante per la mia formazione professionale che mi ha consentito di accrescere le competenze logico/matematiche e tecniche nell’ambito del settore dell’ingegneria dell’informazione.</p>
+            <p>Il tempo trascorso all’università mi ha dato la possibilità di confrontarmi con studenti e professori partecipando a seminari, dibattiti e conferenze di natura scientifica, approfondendo temi sempre più attuali e di particolare interesse personale come i sistemi di trasmissione radio e la realizzazione di antenne a microonde, argomenti affrontati nello sviluppo delle tesi di laurea triennale e magistrale.</p>
+            <p>Durante il percorso di studi ho sviluppato la passione per l’insegnamento che ho potuto coltivare insegnando materie di carattere tecnico e scientifico presso le agenzie di formazione presenti nella provincia di Livorno e negli istituti statali di secondo grado. Ho dunque potuto sperimentare diverse metodologie didattiche in diversi contexti sociali: adulti, stranieri e giovani non inseriti nei percorsi scolastici tradizionali.</p>
+            <p><strong>Allegati:</strong> <a href="https://europa.eu/europass/eportfolio/api/eprofile/shared-profile/giulia-marro/4d7d68d9-67a7-42ec-aa6f-818410c4d9a1?view=html" target="_blank" style="color: var(--secondary-color); font-weight: bold; text-decoration: underline;">Link al Curriculum Vitae Europass</a></p>
+        </section>
+
+        <section id="autobiografia">
+            <h3>SEZIONE B - Riflessioni Professionali Iniziali</h3>
+            <h4>1. Autobiografia Formativa</h4>
+            <p>La mia passione per l'insegnamento è nata ben prima di entrare di ruolo a scuola: è partita anni fa, aiutando ragazzi della scuola primaria e secondaria a capire gli argomenti affrontati in aula. In quel contesto ho capito la bellezza di vedere un ragazzo che finalmente "afferra" un concetto difficile e supera un blocco.</p>
+            <p>Oggi, come docente della classe A040, voglio essere un insegnante che fa da ponte tra la teoria astratta e la realtà pratica. Non mi interessa la classica lezione frontale in cui io parlo e gli studenti copiano formule alla lavagna; voglio che la classe diventi un gruppo di lavoro, dove l'errore non è un fallimento da punire, ma un passaggio normale per arrivare alla soluzione di un problema tecnico. Mi riconosco appieno nel concetto di "imparare facendo" e nel <strong>Costruttivismo</strong>.</p>
+            
+            <h4>I miei punti di riferimento didattici:</h4>
+            <ul>
+                <li><strong>La didattica laboratoriale:</strong> La teoria dei circuiti o i calcoli illuminotecnici hanno senso solo se applicati a un caso concreto.</li>
+                <li><strong>La progettazione a ritroso:</strong> Definire chiaramente prima cosa lo studente deve saper fare e poi costruire le lezioni e le verifiche di conseguenza.</li>
+                <li><strong>La riflessione sull'azione:</strong> Abituare i ragazzi a monitorare il proprio lavoro (ad esempio con un Diario di bordo) per capire dove e perché hanno sbagliato.</li>
+            </ul>
+            <p>Cerco di rendere le mie lezioni stimolanti usando <strong>Software e Tecnologie Digitali</strong> come CAD, fogli Excel e simulatori software. Gli strumenti informatici sono vicini al linguaggio dei ragazzi e funzionano benissimo come misure compensative per gli alunni BES/DSA. Cerco inoltre di far convergere le lezioni su temi attuali come la <strong>Sostenibilità</strong> (transizione energetica, riduzione dei consumi e inquinamento luminoso).</p>
+        </section>
+
+        <section id="bilancio-iniziale">
+            <h3>2. Bilancio Iniziale delle Competenze</h3>
+            
+            <h4>Competenze iniziali in ambito didattico, relazionale e organizzativo</h4>
+            <p>Grazie agli anni passati ad aiutare studenti nello svolgimento dei loro compiti scolastici, ho sviluppato una forte capacità di "tradurre" concetti complessi in linguaggi semplici e immediati. La mia formazione ingegneristica mi permette di dominare i contenuti tecnici con sicurezza, mentre l'esperienza uno-a-uno mi ha allenato all'ascolto empatico.</p>
+            <p>Da ingegnere possiedo una <em>forma mentis</em> strutturata: so pianificare il lavoro per obiettivi, gestire i tempi di consegna e strutturare flussi di lavoro chiari. Sento tuttavia il bisogno di potenziare la gestione delle dinamiche della "classe-gruppo", specialmente quando numerosa o eterogenea, approfondendo le strategie di mediazione dei conflitti e la valutazione per competenze.</p>
+
+            <h4>Strategie per un ambiente di apprendimento inclusivo e gestione BES/DSA</h4>
+            <ul>
+                <li><strong>Cooperative Learning e ruoli definiti:</strong> Dividere la classe in piccoli gruppi eterogenei assegnando a ciascuno uno specifico ruolo (es. il disegnatore CAD, il responsabile del foglio Excel, il coordinator del diario di bordo).</li>
+                <li><strong>Peer Tutoring (Apprendimento tra pari):</strong> Favorire momenti in cui gli studenti più autonomi supportano i compagni in difficoltà.</li>
+                <li><strong>Canale visivo e operativo:</strong> Sostituire lunghe dispense scritte con schemi a blocchi, legende iconografiche a colori per i circuiti elettrici e videotutorial.</li>
+                <li><strong>Integrazione sistematica delle Misure Compensative:</strong> Garantire l'uso di calcolatrici, formulari digitali strutturati e fogli di calcolo pre-impostati per ridurre il carico esecutivo nei ragazzi con discalculia.</li>
+            </ul>
+        </section>
+
+        <section id="livelli-iniziali">
+            <h3>3. Livelli di Competenza Iniziali</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Standard e Indicatore</th>
+                            <th>Livello Autovalutato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Indicatore 1.1</strong> - Individualizzare e/o personalizzare i percorsi di apprendimento...</td>
+                            <td><span class="badge-check">Base</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 1.2</strong> - Attuare l’insegnamento seguendo un piano organizzato e strutturato...</td>
+                            <td><span class="badge-check">Medio</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 1.3</strong> - Individuare le principali connessioni interdisciplinari...</td>
+                            <td><span class="badge-check">Medio</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 2.1</strong> - Utilizzare tecnologie, strumenti innovativi e ambienti organizzati...</td>
+                            <td><span class="badge-check">Avanzato</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 2.2</strong> - Organizzare ambienti e spazi per favorire l'inclusione (BES, DSA)...</td>
+                            <td><span class="badge-check">Base</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 3.1</strong> - Progettare attività di verifica coerenti con gli obiettivi...</td>
+                            <td><span class="badge-check">Base</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicatore 4.1</strong> - Promuovere l’apprendimento collaborativo e/o cooperativo...</td>
+                            <td><span class="badge-check">Medio</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="attività-didattica">
+            <h3>4. Esperienze Professionali</h3>
+            <h4>4.1 Esperienza Attività Didattica</h4>
+            <blockquote>
+                <strong>Titolo dell'attività:</strong> Misura della potenza nei sistemi trifase: Prova pratica con il Metodo di Aron.
+            </blockquote>
+            <p>L'attività ha previsto la progettazione, il cablaggio e l'esecuzione di una prova di laboratorio per la misurazione della potenza attiva totale assorbita da un carico trifase equilibrato e squilibrato, utilizzando due soli wattmetri (inserzione di Aron).</p>
+            
+            <p>Per alleggerire il carico esecutivo e la fatica da calcolo puro (fondamentale per alunni con discalculia), ho guidato i ragazzi nell'uso di un foglio Excel pre-impostato. Inserendo le letture dei due wattmetri ($W_1$ e $W_2$), gli studenti hanno visto applicate in tempo reale le formule:</p>
+            
+            <div class="formula-box">
+                P_tot = W_1 + W_2 <br>
+                Q_tot = √3 · (W_1 - W_2)
+            </div>
+
+            <h4>Autoriflessione e Gestione Imprevisti</h4>
+            <p>Questa esperienza mi ha permesso di rafforzare in modo decisivo la competenza di gestione del gruppo-classe. Non tutto si è sviluppato linearmente: avevo inizialmente sottovalutato il tempo necessario per il cablaggio fisico dei carichi squilibrati. Alcuni gruppi hanno riscontrato letture anomale dei wattmetri (valori negativi inattesi dovuti al fattore di potenza) che hanno generato smarrimento.</p>
+            <p>In quel momento ho modificato la scaletta della lezione: ho interrotto l'attività pratica per aprire un dibattito guidato alla lavagna e analizzare l'errore di interpretazione. Questo ha allungato i tempi previsti, ma ha trasformato un intoppo in una memorabile lezione di <em>problem solving</em>.</p>
+        </section>
+
+        <section id="esperienza-formativa">
+            <h3>4.2 Esperienza Formativa</h3>
+            <p><strong>Titolo:</strong> Corso di abilitazione all'insegnamento per la classe di concorso A040 — Università di Pisa (A.A. 2025/2026 - 30 CFU).</p>
+            <p>Il percorso formativo universitario è stato strutturato in macro-aree integrate, volte a coniugare la mia forma mentis ingegneristica con le scienze dell'educazione:</p>
+            <ul>
+                <li><strong>Insegnamenti teorici:</strong> Pedagogia generale, psicologia dello sviluppo, sociologia dell'educazione.</li>
+                <li><strong>Didattica d'indirizzo (A040):</strong> Trasposizione didattica dei saperi ingegneristici in applicazioni di laboratorio scolastiche.</li>
+                <li><strong>Progettazione inclusiva:</strong> Stesura di PDP e PEI per alunni con BES e DSA.</li>
+                <li><strong>Simulazione pedagogica:</strong> Esercitazioni di micro-teaching e progettazione a ritroso di UDA.</li>
+            </ul>
+        </section>
+
+        <section id="tirocinio-indiretto">
+            <h3>SEZIONE C - Autoriflessione sulle attività di tirocinio indiretto</h3>
+            <p>Le attività svolte nell'ambito del tirocinio indiretto si sono rivelate estremamente stimolanti e di fondamentale importanza per la mia crescita professionale. Il valore aggiunto di questo percorso è stato rappresentato, in particolar modo, dal continuo confronto con i colleghi corsisti.</p>
+            
+            <p>La condivisione sistematica delle loro esperienze didattiche, delle problematiche riscontrate nei rispettivi istituti e delle soluzioni metodologiche adottate ha aperto spazi di riflessione preziosi. Questo scambio tra pari ha permesso di:</p>
+            
+            <ul>
+                <li><strong>Analizzare contesti differenti:</strong> Esplorare l'efficacia di approcci didattici alternativi applicati a diverse tipologie di studenti e gruppi-classe.</li>
+                <li><strong>Co-progettare e validare soluzioni:</strong> Discutere collegialmente la strutturazione di Unità di Apprendimento (UDA) e compiti di realtà, arricchendoli grazie ai feedback e ai punti di vista dei colleghi delle materie tecniche e scientifiche.</li>
+                <li><strong>Condividere buone pratiche per l'inclusione:</strong> Mettere a fattor comune strategie operative per la gestione degli alunni con BES e DSA, ottimizzando l'integrazione di software didattici e strumenti compensativi digitali.</li>
+            </ul>
+            
+            <p>In sintesi, il tirocinio indiretto ha smesso di essere una semplice attività teorica per trasformarsi in una vera e propria comunità di pratica attiva, dimostrando come la collaborazione e il dialogo costante tra docenti siano pilastri imprescindibili per il miglioramento della qualità dell'insegnamento.</p>
+        </section>
+
+        <section id="prospettive-future">
+            <h3>SEZIONE D - Prospettive di sviluppo professionale e formazione continua</h3>
+            <p>Grazie al percorso abilitante presso l’Università di Pisa, ho compiuto il passaggio fondamentale da "professionista esperto della materia" a <strong>professionista della mediazione didattica</strong>.</p>
+            
+            <h4>Le mie direttrici di Lifelong Learning:</h4>
+            <p><strong>1. Aggiornamento tecnico-epistemologico (La disciplina):</strong> Intendo seguire corsi di formazione e webinar promossi da enti accreditati (come il CEI - Comitato Elettrotecnico Italiano e l'AIDI per l'illuminotecnica) sui temi delle <em>Smart Grids</em>, dei sistemi di accumulo, della domotica IoT e delle tecnologie per la transizione energetica.</p>
+            <p><strong>2. Aggiornamento metodologico-didattico (La scuola):</strong> Voglio approfondire i percorsi formativi legati alle Metodologie Didattiche Innovative nell'ambito delle discipline STEM, con particolare riferimento al <em>Problem-Based Learning</em> e all'uso didattico avanzato di software di simulazione come Dialux.</p>
+        </section>
+
+    </main>
+
+</body>
+</html>
